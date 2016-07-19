@@ -25,6 +25,8 @@
                 exit -1
                fi
                
+               echo "$repo"
+               
                mkdir ~/caman-int
                git clone $repo ~/caman-int
                cd ~/caman-int
