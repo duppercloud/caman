@@ -25,6 +25,7 @@
                 exit -1
                fi
                
+               mkdir ~/caman-int
                git clone $repo ~/caman-int
                cd ~/caman-int
                ./caman init ca:~/caman
