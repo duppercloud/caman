@@ -1,0 +1,102 @@
+{
+    ports:
+    [
+        "9418:9418", // for gut
+    ],
+    dependencies:
+    [
+        {
+            name: "apt-packages",
+            cmd:
+            '''
+                apt-get install -y openssl vim 
+            '''
+        }
+    ],
+    commands: {
+        devenv: {
+            server:
+            '''
+                echo "Executing server script..."
+                cp /root/dupperd/.gitignore /root/dupperd/.gutignore
+                ulimit -n 9999
+                ulimit
+            '''
+            client:
+             '''
+                ssh-add -l &>/dev/null
+                if [ "$?" == 2 ]; then
+                  test -r ~/.ssh-agent && \
+                  eval "$(<~/.ssh-agent)" >/dev/null
+
+                  ssh-add -l &>/dev/null
+                  if [ "$?" == 2 ]; then
+                    (umask 066; ssh-agent > ~/.ssh-agent)
+                    eval "$(<~/.ssh-agent)" >/dev/null
+                    ssh-add
+                  fi
+                fi
+
+                mkdir -p $path
+                ssh-add $identityFile
+                gut sync $user@$server:$path $1
+            '''
+        },
+        init: {
+            server:
+            '''
+              ./caman init
+            '''
+        }
+        new_int_ca: {
+            server:
+            '''
+               if [ ! -f ./ca/ca.srt.pem ]; then
+                echo "Initialize Root CA before creating intermediate authority."
+                exit -1
+               fi
+               
+               git clone $repo ~/caman-int
+               cd ~/caman-int
+               ./caman init ca:~/caman
+            '''
+        }
+        new_cert: {
+            server:
+            '''
+               if [ ! -d ~/caman-int ]; then
+                echo "Create intermidiate CA Authority before issuing certificates."
+                exit -1
+               fi
+               
+               cd ~/caman-int
+               ./caman new $1
+               ./caman sign $1
+            '''
+        }
+        renew_cert: {
+            server:
+            '''
+               if [ ! -d ~/caman-int ]; then
+                echo "Run Create intermidiate CA Authority First"
+                exit -1
+               fi
+               
+               cd ~/caman-int
+               ./caman renew $1
+            '''
+        }
+        revoke_cert: {
+            server:
+            '''
+               if [ ! -d ~/caman-int ]; then
+                echo "Run Create intermidiate CA Authority First"
+                exit -1
+               fi
+               
+               cd ~/caman-int
+               ./caman revoke $1
+            '''
+        }
+    }
+}

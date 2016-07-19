@@ -68,12 +68,12 @@ string_mask             = utf8only
 [ req_distinguished_name ]
 # >> Change the following 6 variables:
 #   countryName must be 2 character character code
-countryName             = CN
-stateOrProvinceName     = State or province
-organizationName        = My Organisation
-organizationalUnitName  = My Certificate Authority
-commonName              = My Certificate Authority
-emailAddress            = email@example.com
+countryName             = US
+stateOrProvinceName     = CA
+organizationName        = Dupper
+organizationalUnitName  = Dupper Certificate Authority
+commonName              = Dupper Certificate Authority
+emailAddress            = admin@dupper.co
 # << End changes
 
 ####################################################################
@@ -84,7 +84,7 @@ nsComment               = "OpenSSL Generated Certificate"
 subjectKeyIdentifier    = hash
 authorityKeyIdentifier  = keyid,issuer
 # >> Change the following URL
-crlDistributionPoints   = URI:http://example.com/ca.crl.pem
+crlDistributionPoints   = URI:http://dupper.co/ca.crl.pem
 # << End changes
 
 ####################################################################
@@ -94,7 +94,7 @@ subjectKeyIdentifier    = hash
 authorityKeyIdentifier  = keyid:always,issuer
 basicConstraints        = CA:true
 # >> Change the following URL
-crlDistributionPoints   = URI:http://example.com/ca.crl.pem
+crlDistributionPoints   = URI:http://dupper.co/ca.crl.pem
 # << End changes
 
 ####################################################################
