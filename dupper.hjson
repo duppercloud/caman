@@ -13,6 +13,7 @@
         init: {
             server:
             '''
+              cd ~/caman
               ./caman init
             '''
         }
