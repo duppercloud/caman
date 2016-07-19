@@ -20,7 +20,7 @@
         new_int_ca: {
             server:
             '''
-               if [ ! -f ./ca/ca.srt.pem ]; then
+               if [ ! -f ./ca/ca.crt.pem ]; then
                 echo "Initialize Root CA before creating intermediate authority."
                 exit -1
                fi
