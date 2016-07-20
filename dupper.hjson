@@ -27,10 +27,10 @@
                
                echo "$repo"
                
-               mkdir ~/caman-int
-               git clone $repo ~/caman-int
-               cd ~/caman-int
-               ./caman init ca:~/caman
+               mkdir $HOME/caman-int
+               git clone $repo $HOME/caman-int
+               cd $HOME/caman-int
+               ./caman init ca:$HOME/caman
             '''
         }
         new_cert: {
