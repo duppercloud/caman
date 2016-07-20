@@ -13,7 +13,7 @@
         init: {
             server:
             '''
-              cd ~/caman
+              cd $HOME/caman
               ./caman init
             '''
         }
@@ -36,12 +36,12 @@
         new_cert: {
             server:
             '''
-               if [ ! -d ~/caman-int ]; then
+               if [ ! -d $HOME/caman-int ]; then
                 echo "Create intermidiate CA Authority before issuing certificates."
                 exit -1
                fi
                
-               cd ~/caman-int
+               cd $HOME/caman-int
                ./caman new $1
                ./caman sign $1
             '''
@@ -49,24 +49,24 @@
         renew_cert: {
             server:
             '''
-               if [ ! -d ~/caman-int ]; then
+               if [ ! -d $HOME/caman-int ]; then
                 echo "Run Create intermidiate CA Authority First"
                 exit -1
                fi
                
-               cd ~/caman-int
+               cd $HOME/caman-int
                ./caman renew $1
             '''
         }
         revoke_cert: {
             server:
             '''
-               if [ ! -d ~/caman-int ]; then
+               if [ ! -d $HOME/caman-int ]; then
                 echo "Run Create intermidiate CA Authority First"
                 exit -1
                fi
                
-               cd ~/caman-int
+               cd $HOME/caman-int
                ./caman revoke $1
             '''
         }
