@@ -70,5 +70,19 @@
                ./caman revoke $1
             '''
         }
+        test-test: {
+            server:
+            '''
+            env
+            echo path="$path"
+            echo repo="$repo"
+            echo hostnme="$hostname"
+            echo server="$server"
+            echo ip="$ip"
+            echo name="$name"
+            echo if="$identityFile"
+            echo port="$port"
+            '''
+        }
     }
 }
