@@ -27,7 +27,7 @@
                
                echo "$repo"
                
-               mkdir $HOME/caman-int
+               mkdir -p $HOME/caman-int
                git clone $repo $HOME/caman-int
                cd $HOME/caman-int
                ./caman init ca:$HOME/caman
