@@ -2,7 +2,7 @@
     dependencies:
     [
         {
-            name: "apt-packages",
+            name: "apt-get-packages",
             cmd:
             '''
                 sudo apt-get install -y openssl vim 
