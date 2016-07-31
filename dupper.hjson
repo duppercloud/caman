@@ -5,7 +5,25 @@
             name: "apt-get-packages",
             cmd:
             '''
-                sudo apt-get install -y openssl vim 
+                DNF_CMD=\$(dnf -h 2>&1 >/dev/null)
+                DNF_EXIT_CODE="\$?"
+                YUM_CMD=\$(yum -h 2>&1 >/dev/null)
+                YUM_EXIT_CODE="\$?"
+                APT_GET_CMD=\$(apt-get -v 2>&1 >/dev/null)
+                APT_GET_EXIT_CODE="\$?"
+
+                if [[ \$DNF_EXIT_CODE -eq 0 ]]; then
+                  pkgmgr="dnf install -y "
+                  sys="ALL"
+                elif [[ \$YUM_EXIT_CODE -eq 0 ]]; then
+                  pkgmgr="yum install -y "
+                elif [[ \$APT_GET_EXIT_CODE -eq 0 ]]; then
+                  pkgmgr="apt-get install -y "
+                else
+                  echo "Unsupported Linux Distribution\n"
+                  exit 1;
+                fi        
+                sudo eval $pkgmgr openssl vim 
             '''
         }
     ],
