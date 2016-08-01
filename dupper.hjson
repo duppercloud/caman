@@ -75,25 +75,26 @@
             '''
             env
             echo path="$path"
-            echo repo="$repo"
             echo hostnme="$hostname"
             echo server="$server"
             echo ip="$ip"
             echo name="$name"
             echo if="$identityFile"
             echo port="$port"
+            test="docker++"
+            _export test
             ''',
             client:
             '''
             env
             echo path="$path"
-            echo repo="$repo"
             echo hostnme="$hostname"
             echo server="$server"
             echo ip="$ip"
             echo name="$name"
             echo if="$identityFile"
             echo port="$port"
+            echo test="$test"
             '''
         }
     }
