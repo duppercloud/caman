@@ -86,6 +86,7 @@
             client:
             '''
             env
+            echo $@
             echo path="$path"
             echo hostnme="$hostname"
             echo server="$server"
