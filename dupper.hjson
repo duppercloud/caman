@@ -80,8 +80,6 @@
             echo server="$server"
             echo ip="$ip"
             echo name="$name"
-            echo if="$identityFile"
-            echo port="$port"
             test="docker++"
             _export test
             ''',
@@ -93,8 +91,6 @@
             echo server="$server"
             echo ip="$ip"
             echo name="$name"
-            echo if="$identityFile"
-            echo port="$port"
             echo test="$test"
             '''
         }
