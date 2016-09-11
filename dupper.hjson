@@ -5,7 +5,7 @@
             name: "apt-get-packages",
             cmd:
             '''
-                $pkgmgr install -y openssl vim 
+                apt-get install -y openssl vim 
             '''
         }
     ],
