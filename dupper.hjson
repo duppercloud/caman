@@ -25,10 +25,10 @@
                 exit -1
                fi
                
-               echo "$repo"
+               echo "$REPO_URL"
                
                mkdir -p $HOME/caman-int
-               git clone $repo $HOME/caman-int
+               git clone $REPO_URL $HOME/caman-int
                cd $HOME/caman-int
                ./caman init ca:$HOME/caman
             '''
@@ -75,12 +75,10 @@
             '''
             env
             echo $@
-            echo path="$path"
-            echo hostnme="$hostname"
-            echo server="$server"
-            echo ip="$ip"
-            echo name="$name"
-            test="docker++"
+            echo REPO_ROOT="$REPO_ROOT"
+            echo REPO_URL="$REPO_URL"
+            echo SERVER_IP="$SERVER_IP"
+            test="dupper"
             _export test
             '''
         },{
@@ -88,11 +86,9 @@
             '''
             env
             echo $@
-            echo path="$path"
-            echo hostnme="$hostname"
-            echo server="$server"
-            echo ip="$ip"
-            echo name="$name"
+            echo REPO_ROOT="$REPO_ROOT"
+            echo REPO_URL="$REPO_URL"
+            echo SERVER_IP="$SERVER_IP"
             echo test="$test"
             '''
         }]
