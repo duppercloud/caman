@@ -10,14 +10,14 @@
         }
     ],
     commands: {
-        init: {
+        init: [{
             server:
             '''
               cd $HOME/caman
               ./caman init
             '''
-        }
-        new_int_ca: {
+        }]
+        new_int_ca: [{
             server:
             '''
                if [ ! -f ./ca/ca.crt.pem ]; then
@@ -32,8 +32,8 @@
                cd $HOME/caman-int
                ./caman init ca:$HOME/caman
             '''
-        }
-        new_cert: {
+        }]
+        new_cert: [{
             server:
             '''
                if [ ! -d $HOME/caman-int ]; then
@@ -45,8 +45,8 @@
                ./caman new $1
                ./caman sign $1
             '''
-        }
-        renew_cert: {
+        }]
+        renew_cert: [{
             server:
             '''
                if [ ! -d $HOME/caman-int ]; then
@@ -57,8 +57,8 @@
                cd $HOME/caman-int
                ./caman renew $1
             '''
-        }
-        revoke_cert: {
+        }]
+        revoke_cert: [{
             server:
             '''
                if [ ! -d $HOME/caman-int ]; then
@@ -69,8 +69,8 @@
                cd $HOME/caman-int
                ./caman revoke $1
             '''
-        }
-        test-test: {
+        }]
+        test-test: [{
             server:
             '''
             env
@@ -82,7 +82,8 @@
             echo name="$name"
             test="docker++"
             _export test
-            ''',
+            '''
+        },{
             client:
             '''
             env
@@ -94,6 +95,6 @@
             echo name="$name"
             echo test="$test"
             '''
-        }
+        }]
     }
 }
