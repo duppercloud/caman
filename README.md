@@ -1,4 +1,4 @@
-### caman
+## caman
 
 A self-signing certificate authority manager - create your own certificate
 authority, and generate and manage SSL certificates using openssl.
